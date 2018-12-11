@@ -1,24 +1,20 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## a4ef8q
+### Used
+| name | v |
+| ---- | - |
+| Bootstrap | 4 |
+| Docker Compose | 3 |
+| Phusion Passenger | 6.0 |
+| Postgresql | 11.1 |
+| Rails | 5.2.2 |
+| Ruby | 2.5.3 |
+### Execute
+```sh
+$ git clone https://github.com/exaesel/a4ef8q
+$ cd a4ef8q
+$ docker-compose up
+```
+### Open
+```sh
+127.0.0.1:9000
+```
