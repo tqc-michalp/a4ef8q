@@ -5,6 +5,7 @@ ruby '2.5.3'
 
 gem 'bootsnap', '~> 1.3', '>= 1.3.2', require: false
 gem 'bootstrap', '~> 4.1', '>= 4.1.3'
+gem 'closure_tree', '~> 7.0'
 gem 'coffee-rails', '~> 4.2', '>= 4.2.2'
 gem 'country_select', '~> 3.1', '>= 3.1.1'
 gem 'draper', '~> 3.0', '>= 3.0.1'
