@@ -1,0 +1,26 @@
+version: '3.7'
+volumes:
+  postgresql:
+    driver: local
+services:
+  a4ef8q:
+    build: .
+    command: bundle exec passenger start -p 9000 -b 0.0.0.0
+    entrypoint: [bin/entry]
+    depends_on:
+      - db
+    ports:
+      - "9000:9000"
+    volumes:
+      - .:/sandbox
+  db:
+    image: postgres:11.1
+    environment:
+      POSTGRES_USER: nameless
+      POSTGRES_PASSWORD: ZqJOXFWUuG7dSzR92C
+    restart: always
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgresql:/var/lib/postgresql/data
+      - /tmp:/tmp
