@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   root to: 'mains#index'
-  %i[categories category_attributes].each do |resource|
+  %i[categories category_attributes products].each do |resource|
     resources resource
   end
 end
