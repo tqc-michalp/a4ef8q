@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class MainDecorator < ApplicationDecorator
+class CategoryAttributeDecorator < ApplicationDecorator
   delegate_all
 
   # Define presentation-specific methods here. Helpers are accessed through
