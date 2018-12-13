@@ -1,0 +1,2 @@
+class CategoryHierarchy < ApplicationRecord
+end

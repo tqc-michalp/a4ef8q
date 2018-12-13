@@ -1,0 +1,2 @@
+class CategoryAttribute < ApplicationRecord
+end
