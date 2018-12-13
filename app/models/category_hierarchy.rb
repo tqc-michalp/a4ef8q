@@ -1,2 +1,0 @@
-class CategoryHierarchy < ApplicationRecord
-end
