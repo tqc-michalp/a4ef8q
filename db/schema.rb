@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2018_12_13_020814) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "hstore"
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
@@ -25,7 +26,7 @@ ActiveRecord::Schema.define(version: 2018_12_13_020814) do
 
   create_table "category_attributes", force: :cascade do |t|
     t.bigint "category_id"
-    t.string "name"
+    t.hstore "name_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_category_attributes_on_category_id"
@@ -41,10 +42,12 @@ ActiveRecord::Schema.define(version: 2018_12_13_020814) do
 
   create_table "products", force: :cascade do |t|
     t.bigint "category_id"
+    t.string "name"
     t.jsonb "payload"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["name"], name: "index_products_on_name"
   end
 
   add_foreign_key "category_attributes", "categories"
