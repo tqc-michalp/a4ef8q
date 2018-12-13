@@ -2,5 +2,5 @@
 
 require 'rails_helper'
 
-RSpec.describe MainDecorator do
+RSpec.describe CategoryAttributeDecorator do
 end
