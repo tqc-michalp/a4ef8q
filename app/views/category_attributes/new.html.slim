@@ -1,0 +1,9 @@
+.row
+  .col-auto.mr-auto
+    h1
+      | Nowy atrybut kategorii
+  .col-auto
+    = link_to 'Wróć', category_attributes_path, class: 'btn btn-outline-primary'
+.row
+  .col
+    = render 'form', category_attribute: @category_attribute
