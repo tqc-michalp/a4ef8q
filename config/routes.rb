@@ -2,7 +2,8 @@
 
 Rails.application.routes.draw do
   root to: 'mains#index'
-  %i[categories category_attributes products].each do |resource|
-    resources resource
+  %i[categories category_attributes].each do |resource|
+    resources resource, except: :show
   end
+  resources :products
 end

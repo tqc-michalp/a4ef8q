@@ -1,0 +1,27 @@
+.row
+  .col-auto.mr-auto
+    h1
+      | Kategorie
+  .col-auto
+      = link_to 'Nowa kategoria', new_category_path, class: 'btn btn-outline-primary'
+.row
+  .col
+    table.table
+      thead
+        tr
+          th
+            | Nazwa
+          th
+            | Kategorie rodziców
+          th[colspan="2"]
+      tbody
+        - @categories.each do |category|
+          tr
+            td
+              = category.name
+            td
+              = parent_categories(category)
+            td
+              = link_to 'Edytuj', edit_category_path(category), class: "btn btn-outline-warning #{disabled(category)}"
+            td
+              = link_to 'Usuń', category, class: "btn btn-outline-danger  #{disabled(category)}", method: :delete, data: { confirm: 'Jesteś pewien?' }
