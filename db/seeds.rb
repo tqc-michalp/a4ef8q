@@ -1,3 +1,4 @@
 # frozen_string_literal: true
 
-Category.create(name: 'Root')
+root = Category.new(name: 'Root')
+root.save(validate: false)

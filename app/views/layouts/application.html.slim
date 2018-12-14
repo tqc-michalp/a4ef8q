@@ -12,4 +12,11 @@ html
   body
     = render 'layouts/navbar'
     .container
-      = yield
+      .row
+        .col
+          - flash.each do |name, msg|
+            - if msg.is_a?(String)
+              = content_tag :div, msg, class: "alert alert-#{name}"
+      .row
+        .col
+          = yield

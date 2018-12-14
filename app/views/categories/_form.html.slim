@@ -1,0 +1,4 @@
+= simple_form_for category, input_html: { class: 'form-control' } do |form|
+  = form.input :available_parents, label: 'Kategoria nadrzędna', collection: Category.all, include_blank: false
+  = form.input :name, label: 'Nazwa'
+  = form.button :submit, 'Zatwierdź', class: 'btn btn-outline-success'

@@ -1,0 +1,9 @@
+.row
+  .col-auto.mr-auto
+    h1
+      | Edycja kategorii
+  .col-auto
+      = link_to 'Wróć', categories_path, class: 'btn btn-outline-primary'
+.row
+  .col
+    = render 'form', category: @category
