@@ -1,0 +1,33 @@
+.row
+  .col-auto.mr-auto
+    h1
+      | Atrybuty kategorii
+  .col-auto
+      = link_to 'Nowy atrybut kategorii', new_category_attribute_path, class: 'btn btn-outline-primary'
+.row
+  .col
+    table.table
+      thead
+        tr
+          th
+            | Przynależność
+          th
+            | Nazwa atrybutu
+          th
+            | Typ danych atrybutu
+          th[colspan="2"]
+      tbody
+        - @category_attributes.each do |cat_attr|
+          tr
+            td
+              = cat_attr.category&.name
+            td
+              code
+                = cat_attr.name_type['name']
+            td
+              code
+                = cat_attr_data_type_humanized(cat_attr.name_type['type'])
+            td
+              = link_to 'Edytuj', edit_category_attribute_path(cat_attr), class: 'btn btn-outline-warning'
+            td
+              = link_to 'Usuń', category_attribute_path(cat_attr), class: 'btn btn-outline-danger', method: :delete, data: { confirm: 'Jesteś pewien?' }
