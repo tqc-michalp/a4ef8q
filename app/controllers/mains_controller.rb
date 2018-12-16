@@ -2,4 +2,5 @@
 
 class MainsController < ApplicationController
   def index; end
+  def path_segmentation; end
 end
