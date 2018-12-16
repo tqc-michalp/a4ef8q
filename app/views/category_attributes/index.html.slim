@@ -13,8 +13,6 @@
             | Przynależność
           th
             | Nazwa atrybutu
-          th
-            | Typ danych atrybutu
           th[colspan="2"]
       tbody
         - @category_attributes.each do |cat_attr|
@@ -23,10 +21,7 @@
               = cat_attr.category&.name
             td
               code
-                = cat_attr.name_type['name']
-            td
-              code
-                = cat_attr_data_type_humanized(cat_attr.name_type['type'])
+                = cat_attr.name
             td
               = link_to 'Edytuj', edit_category_attribute_path(cat_attr), class: 'btn btn-outline-warning'
             td

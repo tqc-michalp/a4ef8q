@@ -3,15 +3,16 @@
 | name | v |
 | ---- | - |
 | Bootstrap | 4 |
-| Docker Compose | 3 |
+| Docker Compose | 3.7 |
 | Phusion Passenger | 6.0 |
-| Postgresql | 11.1 |
+| PostgreSQL | 11.1 |
 | Rails | 5.2.2 |
 | Ruby | 2.5.3 |
 ### Execute
 ```sh
-$ git clone https://github.com/exaesel/a4ef8q
+$ git clone git@github.com:exaesel/a4ef8q.git
 $ cd a4ef8q
+$ setup credentials for config/cloudinary.yml
 $ docker-compose up
 ```
 ### Open

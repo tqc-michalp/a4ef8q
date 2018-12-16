@@ -5,7 +5,9 @@ ruby '2.5.3'
 
 gem 'bootsnap', '~> 1.3', '>= 1.3.2', require: false
 gem 'bootstrap', '~> 4.1', '>= 4.1.3'
+gem 'carrierwave', '~> 1.2', '>= 1.2.3'
 gem 'closure_tree', '~> 7.0'
+gem 'cloudinary', '~> 1.11'
 gem 'coffee-rails', '~> 4.2', '>= 4.2.2'
 gem 'country_select', '~> 3.1', '>= 3.1.1'
 gem 'draper', '~> 3.0', '>= 3.0.1'
@@ -19,6 +21,7 @@ gem 'simple_form', '~> 4.1'
 gem 'slim', '~> 4.0', '>= 4.0.1'
 gem 'turbolinks', '~> 5.2'
 gem 'uglifier', '~> 4.1', '>= 4.1.20'
+gem 'virtus', '~> 1.0', '>= 1.0.5'
 
 group :development, :test do
   gem 'byebug', '~> 10.0', '>= 10.0.2'

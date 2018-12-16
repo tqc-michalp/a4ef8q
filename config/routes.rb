@@ -2,8 +2,9 @@
 
 Rails.application.routes.draw do
   root to: 'mains#index'
-  %i[categories category_attributes].each do |resource|
-    resources resource, except: :show
+  scope :set do
+    %i[categories category_attributes products].each do |resource|
+      resources resource, except: :show
+    end
   end
-  resources :products
 end

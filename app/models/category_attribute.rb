@@ -2,9 +2,12 @@
 
 class CategoryAttribute < ApplicationRecord
   belongs_to :category
-  store_accessor :name_type
 
-  enum type: %i[string integer object array boolean null]
+  scope :grouped_by_category, -> { group(:category_id, :name, :id) }
 
-  scope :grouped_by_category, -> { group(:category_id, :id) }
+  before_save :unification
+
+  def unification
+    self.name = name.parameterize.underscore
+  end
 end

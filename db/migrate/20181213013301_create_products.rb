@@ -5,7 +5,8 @@ class CreateProducts < ActiveRecord::Migration[5.2]
     create_table :products do |t|
       t.belongs_to :category, index: true, foreign_key: true
       t.string :name, index: true
-      t.jsonb :payload
+      t.string :picture
+      t.jsonb :specification
 
       t.timestamps
     end

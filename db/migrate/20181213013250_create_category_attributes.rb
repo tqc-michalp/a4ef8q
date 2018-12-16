@@ -2,12 +2,9 @@
 
 class CreateCategoryAttributes < ActiveRecord::Migration[5.2]
   def change
-    enable_extension 'hstore' unless extension_enabled?('hstore')
     create_table :category_attributes do |t|
       t.belongs_to :category, index: true, foreign_key: true
-      t.hstore :name_type
-
-      # add_index :category_attributes, :name_type, using: :gist
+      t.string :name, index: true
 
       t.timestamps
     end

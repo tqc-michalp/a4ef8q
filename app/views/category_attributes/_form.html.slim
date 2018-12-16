@@ -1,6 +1,4 @@
 = simple_form_for category_attribute, input_html: { class: 'form-control' } do |form|
   = form.association :category, include_blank: false
-  = form.simple_fields_for :name_type  do |cat_attr|
-    = cat_attr.input :name, label: 'Nazwa atrybutu'
-    = cat_attr.input :type, label: 'Typ danych: 1) ciąg znaków, 2) liczba, 3) object, 4) tablica, 5) prawda/fałsz, 6) null', include_blank: false, collection: CategoryAttribute.types
+  = form.input :name, label: 'Nazwa atrybutu'
   = form.button :submit, 'Zatwierdź', class: 'btn btn-outline-success'

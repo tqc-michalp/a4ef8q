@@ -1,0 +1,9 @@
+.row
+  .col-auto.mr-auto
+    h1
+      | Edycja produktu
+  .col-auto
+    = link_to 'Wróć', products_path, class: 'btn btn-outline-primary'
+.row
+  .col
+    = render 'form', product: @product

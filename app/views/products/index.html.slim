@@ -1,0 +1,32 @@
+.row
+  .col-auto.mr-auto
+    h1
+      | Produkty
+  .col-auto
+    = link_to 'Nowy produkt', new_product_path, class: 'btn btn-outline-primary'
+.row
+  .col
+    table.table
+      thead
+        tr
+          th
+            | Kategoria: nazwa produktu
+          th
+            | Miniaturka
+          th
+            | Specyfikacja
+          th[colspan="2"]
+      tbody
+        - @products.each do |product|
+          tr
+            td
+              = "#{product.category.name}: #{product.name}"
+            td
+              = cl_image_tag(product.picture)
+            td
+              - product_picture = {a: 1, c: 2, d: 2}
+              = product_specification(product_picture)
+            td
+              = link_to 'Edytuj', edit_product_path(product), class: 'btn btn-outline-warning'
+            td
+              = link_to 'Usuń', product, class: 'btn btn-outline-danger', method: :delete, data: { confirm: 'Jesteś pewien?' }

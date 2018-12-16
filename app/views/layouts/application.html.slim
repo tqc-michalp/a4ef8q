@@ -11,12 +11,12 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     = render 'layouts/navbar'
-    .container
+    .container-fluid
       .row
         .col
           - flash.each do |name, msg|
             - if msg.is_a?(String)
-              = content_tag :div, msg, class: "alert alert-#{name}"
+              = content_tag :div, msg, class: "alert alert-#{name}", role: 'alert'
       .row
         .col
           = yield

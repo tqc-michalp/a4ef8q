@@ -36,10 +36,7 @@ end
 def root_price_attr
   CategoryAttribute.create(
     category_id: Category.find_by(name: 'Root').id,
-    name_type: {
-      name: 'price',
-      type: 'integer'
-    }
+    name: 'cena'
   )
 end
 

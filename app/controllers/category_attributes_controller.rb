@@ -40,11 +40,9 @@ class CategoryAttributesController < ApplicationController
 
   def set_category_attribute
     @category_attribute = CategoryAttribute.find(params[:id])
-    @category_attribute.name_type.symbolize_keys!
-    @category_attribute
   end
 
   def category_attribute_params
-    params.require(:category_attribute).permit(:category_id, name_type: %i[name type])
+    params.require(:category_attribute).permit(:category_id, :name)
   end
 end
