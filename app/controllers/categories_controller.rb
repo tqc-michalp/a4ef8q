@@ -15,8 +15,10 @@ class CategoriesController < ApplicationController
   def edit; end
 
   def create
-    parent = Category.find(category_params[:available_parents])
-    if parent.children.create(name: category_params[:name])
+    # parent = Category.find(category_params[:available_parents])
+    # if parent.children.create(name: category_params[:name])
+    category = Category.new(category_params)
+    if category.save
       redirect_to categories_url, flash: { success: 'Kategoria utworzona' }
     else
       render :new, flash: { error: 'Kategoria nie została utworzona' }
@@ -43,7 +45,7 @@ class CategoriesController < ApplicationController
   end
 
   def category_params
-    params.require(:category).permit(:name, :available_parents)
+    params.require(:category).permit(:name, :parent_id)
   end
 
   def prevent_modify_root_cat

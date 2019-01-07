@@ -1,0 +1,14 @@
+.col-sm-3
+  .card
+    = cl_image_tag(product.picture, class: 'card-img-top img-adjusted')
+    .card-body
+      h5.card-title
+        = product.name
+      p.card-text
+        - if product.specification
+          ul
+            - product.specification.each do |k, v|
+              li
+                = "#{k} : #{v}"
+        - else
+          = [Faker::Hacker.adjective, Faker::Hacker.noun, Faker::Hacker.verb].sample

@@ -1,0 +1,8 @@
+.row
+  .col-4
+    h2 Drzewo kategorii
+    = build_category_tree
+  .col-8
+    h2 Produkty
+    #products.card-deck
+      = render partial: 'product', collection: @products

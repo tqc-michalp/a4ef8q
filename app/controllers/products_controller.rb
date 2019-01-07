@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = ProductForm.new(@product)
+    @product_attributes = load_category_attributes(@product)
   end
 
   def create
@@ -51,8 +51,20 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def load_category_attributes(val)
+    harvested = {}
+    val.category.ancestors.each do |category_item|
+      category_item.category_attributes.each do |category_attribute|
+        harvested[category_attribute.name] = category_attribute.data_type.to_sym
+      end
+    end
+    harvested
+  end
+
   def product_params
-    params.require(:product).permit(:category_id, :name, :picture, specification: [])
+    params
+      .require(:product)
+      .permit(:category_id, :name, :picture, :picture_cache, specification: {})
   end
 
   def parse_included_specification; end

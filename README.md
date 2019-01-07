@@ -7,13 +7,13 @@
 | Phusion Passenger | 6.0 |
 | PostgreSQL | 11.1 |
 | Rails | 5.2.2 |
-| Ruby | 2.5.3 |
+| Ruby | 2.6.0 |
 ### Execute
 ```sh
 $ git clone git@github.com:exaesel/a4ef8q.git
 $ cd a4ef8q
 $ setup credentials for config/cloudinary.yml
-$ docker-compose up
+$ docker-compose up --build
 ```
 ### Open
 ```sh
