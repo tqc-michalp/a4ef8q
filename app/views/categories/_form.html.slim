@@ -1,4 +1,7 @@
-= simple_form_for category, input_html: { class: 'form-control' } do |form|
-  = form.input :available_parents, label: 'Kategoria nadrzędna', collection: Category.all, include_blank: false
-  = form.input :name, label: 'Nazwa'
-  = form.button :submit, 'Zatwierdź', class: 'btn btn-outline-success'
+= form_for category, html: { class: '' } do |form|
+  .input-group.mb-3
+    = form.collection_select(:parent_id, Category.all, :id, :name, {}, { class: 'col-md-4 custom-select' })
+  .form-group.mb-3
+    = form.text_field :name, label: 'Nazwa', class: 'col-md-4 form-control'
+  .form-group.mb-3
+    = form.submit 'Utwórz Kategorię', class: 'col-md-4 form-control'

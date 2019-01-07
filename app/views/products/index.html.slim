@@ -24,8 +24,7 @@
             td
               = cl_image_tag(product.picture)
             td
-              - product_picture = {a: 1, c: 2, d: 2}
-              = product_specification(product_picture)
+              = product_specification(product.specification) if product.specification.present?
             td
               = link_to 'Edytuj', edit_product_path(product), class: 'btn btn-outline-warning'
             td

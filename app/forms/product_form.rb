@@ -1,21 +1,20 @@
 # frozen_string_literal: true
 
-class HashJson < Virtus::Attribute
-  def coerce(value)
-    unless value.nil?
-      value.is_a?(::Hash) ? value : JSON.parse(value)
-    end
-  end
-end
+# class HashJson < Virtus::Attribute
+#   def coerce(value)
+#     unless value.nil?
+#       value.is_a?(::Hash) ? value : JSON.parse(value)
+#     end
+#   end
+# end
 
 class ProductForm
   include ActiveModel::Model
-  include Virtus.model
 
-  attribute :category, Integer
-  attribute :name, String
-  attribute :picture, String
-  attribute :specification, HashJson
+  # attribute :category, Integer
+  # attribute :name, String
+  # attribute :picture, String
+  # attribute :specification, HashJson
 
   def initialize(product)
     retrive_attrs_from_categories(product).each do |attr|

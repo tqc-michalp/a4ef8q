@@ -43,6 +43,6 @@ class CategoryAttributesController < ApplicationController
   end
 
   def category_attribute_params
-    params.require(:category_attribute).permit(:category_id, :name)
+    params.require(:category_attribute).permit(:category_id, :name, :data_type)
   end
 end
