@@ -1,26 +1,30 @@
 version: '3.7'
+
 volumes:
-  postgresql:
+  postgres:
     driver: local
+
 services:
+
   a4ef8q:
     build: .
-    command: bundle exec passenger start -p 9000 -b 0.0.0.0
+    command: "foreman start -f ./Procfile.${RAILS_ENV}"
     entrypoint: [bin/entry]
+    stdin_open: true
+    tty: true
     depends_on:
-      - db
+      - postgres
     ports:
       - "9000:9000"
     volumes:
-      - .:/sandbox
-  db:
-    image: postgres:11.1
-    environment:
-      POSTGRES_USER: nameless
-      POSTGRES_PASSWORD: ZqJOXFWUuG7dSzR92C
+      - .:/backend
+
+  postgres:
+    image: postgres:11.2
+    env_file:
+      - "./.env.${RAILS_ENV}.local"
     restart: always
     ports:
-      - "5434:5432"
+      - "5433:5432"
     volumes:
-      - postgresql:/var/lib/postgresql/data
-      - /tmp:/tmp
+      - postgres:/var/lib/postgresql/data
