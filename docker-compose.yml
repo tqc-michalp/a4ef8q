@@ -10,8 +10,8 @@ services:
     build: .
     command: "foreman start -f ./Procfile.${RAILS_ENV}"
     entrypoint: [bin/entry]
-    stdin_open: true
     tty: true
+    stdin_open: true
     depends_on:
       - postgres
     ports:

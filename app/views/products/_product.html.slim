@@ -1,0 +1,9 @@
+tr
+  td
+    = "#{product.category.name}: #{product.name}"
+  td
+    = product_specification(product.specification) if product.specification.present?
+  td
+    = link_to 'Edytuj', edit_product_path(product), class: 'btn btn-outline-warning'
+  td
+    = link_to 'Usuń', product, class: 'btn btn-outline-danger', method: :delete, data: { confirm: 'Jesteś pewien?' }

@@ -1,0 +1,9 @@
+tr
+  td
+    = category.name
+  td
+    = show_parent_category(category)
+  td
+    = link_to 'Edytuj', edit_category_path(category), class: "btn btn-outline-warning #{disabled(category)}"
+  td
+    = link_to 'Usuń', category, class: "btn btn-outline-danger  #{disabled(category)}", method: :delete, data: { confirm: 'Jesteś pewien?' }

@@ -4,9 +4,6 @@
   .form-group.mb-3
     = form.text_area :name, label: 'Nazwa', class: 'col-md-4 form-control'
   .form-group.mb-3
-    = form.hidden_field(:picture_cache)
-    = form.file_field(:picture, { class: 'col-md-4 form-control-file' })
-  .form-group.mb-3
     - if @product_attributes.present?
       = form.fields_for :specification do |fields_for|
         - @product_attributes.each do |key, value|
