@@ -1,12 +1,16 @@
 # frozen_string_literal: true
 
 module CategoriesHelper
-  def parent_categories(record)
+  def show_parent_category(record)
     content_tag :ol do
-      record.ancestry_path[0..-2].each do |anc|
-        concat content_tag(:li, anc)
-      end
+      parent_category(record)
     end
+  end
+
+  def parent_category(record)
+    return if record.parent.nil?
+    concat content_tag(:li, record.name)
+    parent_category(record.parent)
   end
 
   def disabled(record)
@@ -20,7 +24,7 @@ module CategoriesHelper
   def deepest_categories_list
     result = []
     Category.all.each do |cat|
-      next unless cat.leaf?
+      next unless cat.children.empty?
 
       result.push [cat.name, cat.id]
     end
@@ -33,6 +37,8 @@ module CategoriesHelper
       harvesting_branches(cat_root)
     end
   end
+
+  private
 
   def harvesting_branches(input_category)
     input_category.children.each do |child|

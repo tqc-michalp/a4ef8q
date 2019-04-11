@@ -3,35 +3,20 @@
 def seed_categories
   root = Category.new(name: 'Root')
   root.save(validate: false)
-  %w[Samochody Telefony].each do |name|
-    create_category(root.id, name)
-  end
-  %w[Osobowe Ciężarowe].each do |name|
-    create_category(
-      Category.find_by(name: 'Samochody').id,
-      name
-    )
-  end
-  %w[BMW Honda Mercedes Opel].each do |name|
-    create_category(
-      Category.find_by(name: 'Osobowe').id,
-      name
-    )
-  end
-  %w[Apple Samsung LG].each do |name|
-    create_category(
-      Category.find_by(name: 'Telefony').id,
-      name
-    )
-  end
+
+  %w[Samochody Telefony].each { |name| create_category(root.id, name) }
+  %w[Osobowe Ciężarowe].each { |name| create_category(Category.find_by(name: 'Samochody').id, name) }
+  %w[BMW Honda Mercedes Opel].each { |name| create_category(Category.find_by(name: 'Osobowe').id, name) }
+  %w[Apple Samsung LG].each { |name| create_category(Category.find_by(name: 'Telefony').id, name) }
 end
 
 def create_category(cat_parent_id, name)
   Category.create(
     parent_id: cat_parent_id,
     name: name
-  ).id
+  )
 end
+
 
 def seed_categories_attributes
   cat_id_root = Category.find_by(name: 'Root').id
@@ -73,57 +58,37 @@ def create_cars
   cat_id_ciezarowe = Category.find_by(name: 'Ciężarowe').id
 
   ['M3 E92', 'BMW M4', 'BMW M6', 'M3 E46'].each do |car|
-    img_url = Cloudinary::Api.resource(
-      "a4ef8q/#{car.parameterize.underscore}"
-    )['secure_url']
     Product.create(
       category_id: cat_id_bmw,
-      name: car,
-      remote_picture_url: img_url
+      name: car
     )
   end
 
   ['Honda NSX', 'Civic Type R'].each do |car|
-    img_url = Cloudinary::Api.resource(
-      "a4ef8q/#{car.parameterize.underscore}"
-    )['secure_url']
     Product.create(
       category_id: cat_id_honda,
-      name: car,
-      remote_picture_url: img_url
+      name: car
     )
   end
 
   ['Mercedes A45 AMG', 'Mercedes C63 AMG', 'Mercedes SLR AMG'].each do |car|
-    img_url = Cloudinary::Api.resource(
-      "a4ef8q/#{car.parameterize.underscore}"
-    )['secure_url']
     Product.create(
       category_id: cat_id_mercedes,
-      name: car,
-      remote_picture_url: img_url
+      name: car
     )
   end
 
   ['Astra OPC', 'Corsa OPC', 'Vectra OPC'].each do |car|
-    img_url = Cloudinary::Api.resource(
-      "a4ef8q/#{car.parameterize.underscore}"
-    )['secure_url']
     Product.create(
       category_id: cat_id_opel,
-      name: car,
-      remote_picture_url: img_url
+      name: car
     )
   end
 
   ['Tatra'].each do |car|
-    img_url = Cloudinary::Api.resource(
-      "a4ef8q/#{car.parameterize.underscore}"
-    )['secure_url']
     Product.create(
       category_id: cat_id_ciezarowe,
-      name: car,
-      remote_picture_url: img_url
+      name: car
     )
   end
 end
@@ -131,37 +96,25 @@ end
 def create_cellphones
   cat_id_apple = Category.find_by(name: 'Apple').id
   ['iPhone 6s', 'iPhone X', 'iPhone 4s'].each do |cellphone|
-    img_url = Cloudinary::Api.resource(
-      "a4ef8q/#{cellphone.parameterize.underscore}"
-    )['secure_url']
     Product.create(
       category_id: cat_id_apple,
-      name: cellphone,
-      remote_picture_url: img_url
+      name: cellphone
     )
   end
 
   cat_id_lg = Category.find_by(name: 'LG').id
   ['Lg G7 Thinq'].each do |cellphone|
-    img_url = Cloudinary::Api.resource(
-      "a4ef8q/#{cellphone.parameterize.underscore}"
-    )['secure_url']
     Product.create(
       category_id: cat_id_lg,
-      name: cellphone,
-      remote_picture_url: img_url
+      name: cellphone
     )
   end
 
   cat_id_samsung = Category.find_by(name: 'Samsung').id
   ['Samsung Galaxy S9'].each do |cellphone|
-    img_url = Cloudinary::Api.resource(
-      "a4ef8q/#{cellphone.parameterize.underscore}"
-    )['secure_url']
     Product.create(
       category_id: cat_id_samsung,
-      name: cellphone,
-      remote_picture_url: img_url
+      name: cellphone
     )
   end
 end

@@ -15,13 +15,4 @@
             | Kategorie rodziców
           th[colspan="2"]
       tbody
-        - @categories.each do |category|
-          tr
-            td
-              = category.name
-            td
-              = parent_categories(category)
-            td
-              = link_to 'Edytuj', edit_category_path(category), class: "btn btn-outline-warning #{disabled(category)}"
-            td
-              = link_to 'Usuń', category, class: "btn btn-outline-danger  #{disabled(category)}", method: :delete, data: { confirm: 'Jesteś pewien?' }
+        = render partial: 'category', collection: @categories

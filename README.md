@@ -1,19 +1,21 @@
 ## a4ef8q
+
 ### Used
-| name | v |
-| ---- | - |
-| Bootstrap | 4 |
-| Docker Compose | 3.7 |
-| Phusion Passenger | 6.0 |
-| PostgreSQL | 11.1 |
-| Rails | 5.2.2 |
-| Ruby | 2.6.0 |
-### Execute
+
+* **Bootstrap** `4.3`
+* **Docker Compose** `3.7`
+* **Phusion Passenger** `6.0.2`
+* **PostgreSQL** `11.2`
+* **Rack** `2.0.7`
+* **Rails** `6.0.0.beta3`
+* **Ruby** `2.6.2`
+* **RubyGems** `3.0.3`
+
+### Launch
 ```sh
 $ git clone git@github.com:exaesel/a4ef8q.git
 $ cd a4ef8q
-$ setup credentials for config/cloudinary.yml
-$ docker-compose up --build
+$ RAILS_ENV=development docker-compose up --build
 ```
 ### Open
 ```sh

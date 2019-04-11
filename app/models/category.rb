@@ -12,13 +12,15 @@
 #
 
 class Category < ApplicationRecord
-  has_closure_tree
 
   attr_reader :available_parents
 
+  belongs_to :parent, class_name: 'Category'
+  has_many :children, class_name: 'Category', foreign_key: "parent_id"
   has_many :category_attributes
   has_many :products
 
   validates :name, presence: true
   validates :name, uniqueness: true
+
 end

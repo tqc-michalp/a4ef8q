@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[edit update destroy]
-
   def index
     @products = Product.all
   end
@@ -12,6 +10,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = load_product
     @product_attributes = load_category_attributes(@product)
   end
 
@@ -31,6 +30,7 @@ class ProductsController < ApplicationController
   end
 
   def update
+    @product = load_product
     if @product.update(product_params)
       redirect_to products_url, flash:
       { success:
@@ -41,23 +41,29 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    @product = load_product
     @product.destroy
     redirect_to products_url, flash: { info: 'Produkt został usunięty' }
   end
 
   private
 
-  def set_product
-    @product = Product.find(params[:id])
+  def load_product
+    Product.find(params[:id])
   end
 
-  def load_category_attributes(val)
+  def load_category_attributes(product)
     harvested = {}
-    val.category.ancestors.each do |category_item|
-      category_item.category_attributes.each do |category_attribute|
-        harvested[category_attribute.name] = category_attribute.data_type.to_sym
+    base_category = product.category
+    parent_category = lambda do |category|
+      category.category_attributes.each do |ca|
+        harvested[ca.name] = ca.data_type.to_sym
       end
+      return if category.parent.nil?
+
+      parent_category.(category.parent)
     end
+    parent_category.call(base_category)
     harvested
   end
 
