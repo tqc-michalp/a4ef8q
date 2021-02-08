@@ -5,7 +5,7 @@ ruby '2.6.2'
 
 gem 'bootsnap', '~> 1.4', '>= 1.4.3', require: false
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
-gem 'carrierwave', '~> 1.3', '>= 1.3.1'
+gem 'carrierwave', '~> 1.3'
 gem 'coffee-rails', '~> 4.2', '>= 4.2.2'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'passenger', '~> 6.0', '>= 6.0.2', require: 'phusion_passenger/rack_handler'
